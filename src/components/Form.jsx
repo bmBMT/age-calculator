@@ -3,7 +3,7 @@ import Label from "./UI/Label/Label";
 import Input from "./UI/Input/Input";
 import FormItem from "./FormItem";
 
-const Form = ({ day, setDay, month, setMonth, year, setYear }) => {
+const Form = ({ ref, day, setDay, month, setMonth, year, setYear }) => {
   const formDatas = [
     { title: "day", val: day, setVal: setDay },
     { title: "month", val: month, setVal: setMonth },
@@ -15,6 +15,7 @@ const Form = ({ day, setDay, month, setMonth, year, setYear }) => {
       style={{
         display: "flex",
         gap: 24,
+        flexWrap: 'wrap'
       }}
     >
       {formDatas.map((data, i) => (

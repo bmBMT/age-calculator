@@ -22,8 +22,12 @@ const App = () => {
     setHide(!hide);
   }
 
+  let windowWidth = window.innerWidth;
+  let hidden = windowWidth > 425 ? 200 : 400;
+  let visible = windowWidth > 425 ? 500 : 700;
+
   return (
-    <div className="app" style={{ maxHeight: hide ? 200 : 500 }}>
+    <div className="app" style={{ maxHeight: hide ? hidden : visible }}>
       <Form
         day={day}
         setDay={setDay}

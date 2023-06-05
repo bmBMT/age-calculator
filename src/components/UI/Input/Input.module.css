@@ -1,8 +1,8 @@
 .input::-webkit-outer-spin-button,
 .input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
-.input[type='number'] {
+.input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -13,4 +13,10 @@
   font-size: 32px;
   font-weight: 700;
   width: 110px;
+}
+
+@media (max-width: 425px) {
+  .input {
+    width: 100%;
+  }
 }
