@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css";
-import { useFetching } from "./hooks/useFetching";
-import DateService from "./API/DateService";
 import { ageCalculate } from "./utils/ageCalculate";
 import { useInput } from "./hooks/useInput";
 import Form from "./components/Form";
@@ -16,17 +14,8 @@ const App = () => {
   const [age, setAge] = useState({});
   const [hide, setHide] = useState(true);
 
-  const [fetchCurrentDate, isDateLoading, dateError] = useFetching(async () => {
-    const date = await DateService.getDate();
-    setCurrentDate(date);
-  });
-
   useEffect(() => {
-    fetchCurrentDate();
-  }, []);
-
-  useEffect(() => {
-    setAge(ageCalculate(currentDate, day, month, year));
+    setAge(ageCalculate(day, month, year));
   }, [currentDate, day, month, year]);
 
   function changeHidden() {
