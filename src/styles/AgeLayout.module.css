@@ -1,0 +1,10 @@
+.number,
+.text {
+  font-weight: 800;
+  font-size: 40px;
+  font-style: italic;
+}
+
+.number {
+  color: var(--MAIN-COLOR);
+}
