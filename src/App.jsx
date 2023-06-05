@@ -7,7 +7,6 @@ import AgeLayot from "./components/AgeLayot";
 import AgeHide from "./components/AgeHide";
 
 const App = () => {
-  const [currentDate, setCurrentDate] = useState({});
   const [day, setDay] = useInput(0);
   const [month, setMonth] = useInput(1);
   const [year, setYear] = useInput(2000);
@@ -16,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     setAge(ageCalculate(day, month, year));
-  }, [currentDate, day, month, year]);
+  }, [day, month, year]);
 
   function changeHidden() {
     setHide(!hide);
