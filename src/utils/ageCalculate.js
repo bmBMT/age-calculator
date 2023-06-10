@@ -1,41 +1,30 @@
-function daysInMonth(month, year) {
-  return new Date(year, month, 0).getDate();
-}
-
-export const ageCalculate = (day, month, year) => {
+export function ageCalculate(birthDay, birthMonth, birthYear) {
   const today = new Date();
-  const dd = +String(today.getDate()).padStart(2, '0');
-  const mm = +String(today.getMonth() + 1).padStart(2, '0');
-  const yyyy = +today.getFullYear();
+  const thisYear = today.getFullYear();
+  const thisMonth = today.getMonth() + 1;
+  const thisDay = today.getDate();
 
-  const dayInMonth = daysInMonth(month, year);
-  if (day > dayInMonth || month > 12 || year > yyyy || (year === yyyy && month > mm) || (year === yyyy && month === mm && day > dd)) {
-    return {
-      years: '--',
-      months: '--',
-      days: '--'
+  let ageYears = thisYear - birthYear;
+  let ageMonths = thisMonth - birthMonth;
+  let ageDays = thisDay - birthDay;
+
+  if (ageMonths < 0 || (ageMonths == 0 && ageDays < 0)) {
+    ageYears -= 1;
+    ageMonths = 12 + ageMonths;
+    if (ageDays < 0) {
+      ageMonths -= 1;
+      ageDays = 31 + ageDays;
     }
   }
 
-  let years = yyyy - year;
-  let months = mm - month - (dd < day ? 1 : 0);
-  let days = dd - day + 1;
-
-  if (months < 0) {
-    months += 12;
-    years--;
+  if (ageDays < 0) {
+    const lastMonth = new Date(thisYear, thisMonth - 1, 0).getDate();
+    ageDays = lastMonth - birthDay + thisDay;
   }
 
-  if (days < 0) {
-    while (days < 0) {
-      days += daysInMonth(mm, yyyy);
-    }
-  }
-
-  const age = {
-    years,
-    months,
-    days
-  }
-  return age;
+  return {
+    years: ageYears,
+    months: ageMonths,
+    days: ageDays
+  };
 }
