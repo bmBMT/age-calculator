@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./styles/index.css";
-import { ageCalculate } from "./utils/ageCalculate";
+import { getFullAge } from "./utils/getFullAge";
 import { useInput } from "./hooks/useInput";
 import Form from "./components/Form";
 import AgeLayot from "./components/AgeLayot";
@@ -14,7 +14,7 @@ const App = () => {
   const [hide, setHide] = useState(true);
 
   useEffect(() => {
-    setAge(ageCalculate(day, month, year));
+    setAge(getFullAge(day, month, year));
   }, [day, month, year]);
 
   function changeHidden() {
